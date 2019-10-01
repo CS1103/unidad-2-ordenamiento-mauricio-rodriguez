@@ -6,12 +6,13 @@ using namespace std;
 
 
 TEST_CASE("Sort") {
-    SECTION("Order array by merge sort") {
+    SECTION("Order array by quick sort") {
         vector<int>v1={1,7,6,8,9,0};
         Sorter<int> p(v1);
         p.Quick();
 
-        REQUIRE(v1[1] == 1);
+        REQUIRE(v1[0] == 0);
+        REQUIRE(v1[1]==1);
     }
     /*SECTION("Order vector by quick sort") {
 

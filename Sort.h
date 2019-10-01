@@ -19,32 +19,35 @@ public:
         auto it_end= valores.end();
         auto it_mid= next(it_begin, valores.size()/2);
     }
-    void QuickSort(vector<T> &valores,itr it_begin,itr it_end){
-        if(valores.size()>1)
-        {   auto mid=partition(it_begin,it_end);
-            QuickSort(valores,it_begin,mid-1);
-            QuickSort(valores,mid+1,it_end);
-        }
-    };
-    void Quick(){
-        QuickSort(valores,begin(valores),end(valores)-1);
-    }
-
     itr partition(itr left,itr right)
     {
-        auto i=left-1;
-        auto it=left;
+        itr i=left-1;
+        itr it=left;
         while(it<right)
         {
             if(*it<=*right){
                 ++i;
-                swap(*i,*it);
-            }
-            ++it;
+                std::swap(*i,*it);}
+                ++it;
         }
         swap(*(i+1),*right);
         return ++i;
     }
+
+    void quicksort(std::vector<int>& v,itr left, itr right)
+    {
+        if(distance(left,right)>=2)
+        {
+            auto mid=partition(left,right);
+            quicksort(v,left,mid-1);
+            quicksort(v,mid+1,right);
+        }
+    }
+    void Quick(){
+        quicksort(valores,begin(valores),end(valores)-1);
+    }
+
+
 
     void HeapSort();
     void ShellSort();
